@@ -1,17 +1,625 @@
 ---
+import '../styles/global.css';
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Wave IA",
+  "description": "Agence web spécialisée en création de sites, SEO local et communication digitale au Pays Basque",
+  "url": "https://wave-ia.fr",
+  "areaServed": [
+    { "@type": "City", "name": "Bayonne" },
+    { "@type": "City", "name": "Anglet" },
+    { "@type": "City", "name": "Biarritz" }
+  ],
+  "knowsAbout": ["Création Web", "SEO Local", "Communication Digitale", "IA & Automatisation"],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Bayonne",
+    "addressRegion": "Nouvelle-Aquitaine",
+    "postalCode": "64100",
+    "addressCountry": "FR"
+  }
+};
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Wave IA — Agence Web Pays Basque | Bayonne · Anglet · Biarritz</title>
+    <meta name="description" content="Wave IA, agence web au Pays Basque. Création de sites performants, SEO local et stratégie IA à Bayonne, Anglet et Biarritz. On fait pousser votre visibilité." />
+
+    <!-- Geo Meta Tags (S-Tier Bible §2.2) -->
+    <meta name="geo.region" content="FR-64" />
+    <meta name="geo.placename" content="Bayonne, Pays Basque" />
+    <meta name="geo.position" content="43.4929;-1.4748" />
+    <meta name="ICBM" content="43.4929, -1.4748" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+
+    <!-- Structured Data (S-Tier Bible §2.2) -->
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </head>
+
+  <body>
+    <!-- Noise grain overlay (S-Tier Bible §4.1) -->
+    <div class="noise-overlay" aria-hidden="true"></div>
+
+    <!-- ═══════════════════════════════════
+         NAVBAR
+    ═══════════════════════════════════ -->
+    <header id="navbar" class="navbar-glass fixed top-0 left-0 right-0 z-50">
+      <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="flex items-center justify-between h-[72px]">
+
+          <!-- Logo -->
+          <a href="#" aria-label="Wave IA — Accueil" class="flex items-center gap-2 group">
+            <span class="font-archivo text-[22px] text-[#0B3A22] group-hover:opacity-80 transition-opacity leading-none">
+              Wave IA
+            </span>
+          </a>
+
+          <!-- Nav Links Desktop -->
+          <nav class="hidden md:flex items-center gap-10" role="navigation" aria-label="Navigation principale">
+            <a href="#expertises" class="text-sm font-medium text-[#2D3748] hover:text-[#0B3A22] transition-colors">Expertises</a>
+            <a href="#ressources" class="text-sm font-medium text-[#2D3748] hover:text-[#0B3A22] transition-colors">Ressources</a>
+            <a href="#apropos" class="text-sm font-medium text-[#2D3748] hover:text-[#0B3A22] transition-colors">À propos</a>
+          </nav>
+
+          <!-- CTA Desktop -->
+          <a href="#contact" class="btn-rose hidden md:inline-flex">CONTACTEZ-NOUS</a>
+
+          <!-- Hamburger Mobile -->
+          <button
+            id="hamburger"
+            class="md:hidden flex flex-col justify-center gap-[5px] w-8 h-8"
+            aria-label="Ouvrir le menu"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+          >
+            <span class="block w-6 h-[1.5px] bg-[#0B3A22] transition-all duration-300 origin-center" id="bar1"></span>
+            <span class="block w-6 h-[1.5px] bg-[#0B3A22] transition-all duration-300" id="bar2"></span>
+            <span class="block w-6 h-[1.5px] bg-[#0B3A22] transition-all duration-300 origin-center" id="bar3"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" role="menu" aria-label="Menu mobile">
+        <a href="#expertises" class="text-sm font-medium text-[#0B3A22] py-2">Expertises</a>
+        <a href="#ressources" class="text-sm font-medium text-[#0B3A22] py-2">Ressources</a>
+        <a href="#apropos" class="text-sm font-medium text-[#0B3A22] py-2">À propos</a>
+        <a href="#contact" class="btn-rose self-start mt-2">CONTACTEZ-NOUS</a>
+      </div>
+    </header>
+
+    <!-- ═══════════════════════════════════
+         MAIN CONTENT
+    ═══════════════════════════════════ -->
+    <main id="main-content">
+
+      <!-- ──────────────────────────────
+           SECTION 1 — HERO
+      ────────────────────────────── -->
+      <section
+        id="hero"
+        class="min-h-screen pt-[72px] flex items-center overflow-hidden"
+        style="background-color: #FCFBF9;"
+      >
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 w-full py-16 md:py-20">
+          <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 xl:gap-16 items-center">
+
+            <!-- ── Left Column ── -->
+            <div class="hero-left flex flex-col gap-7">
+
+              <!-- Surtitre -->
+              <div class="surtitre">L'agence web qui fait pousser ton business</div>
+
+              <!-- H1 -->
+              <h1 class="font-archivo text-[#0B3A22] uppercase leading-[1.06] tracking-tight" style="font-size: clamp(34px, 5.2vw, 68px);">
+                CHUUUUT !<br/>
+                ÇA POUSSE.<br/>
+                <span style="font-size: clamp(24px, 3.6vw, 48px); color: #0B3A22; opacity: 0.85;">
+                  UN BON SITE N'A PAS<br/>BESOIN DE FAIRE<br/>DE BRUIT
+                </span>
+              </h1>
+
+              <!-- Description -->
+              <p class="text-[#4A5568] leading-relaxed max-w-lg" style="font-size: clamp(15px, 1.1vw, 18px);">
+                Wave IA accompagne les entrepreneurs et PME du Pays Basque dans leur transformation digitale. Création web sur-mesure, SEO local et stratégie IA — depuis Bayonne, Anglet et Biarritz.
+              </p>
+
+              <!-- CTA Buttons -->
+              <div class="flex flex-wrap gap-4">
+                <a href="#contact" class="btn-rose-xl">FAIRE GERMER MA VISIBILITÉ</a>
+                <a href="#expertises" class="btn-ghost-forest">VOIR NOS EXPERTISES</a>
+              </div>
+
+              <!-- Trust Stats -->
+              <div class="flex items-center gap-8 pt-2">
+                <div>
+                  <div class="font-archivo text-2xl text-[#0B3A22]">+47</div>
+                  <div class="text-xs text-[#A0AEC0] mt-0.5">Projets réalisés</div>
+                </div>
+                <div class="w-px h-10 bg-[#E2D9CC]"></div>
+                <div>
+                  <div class="font-archivo text-2xl text-[#0B3A22]">98%</div>
+                  <div class="text-xs text-[#A0AEC0] mt-0.5">Clients satisfaits</div>
+                </div>
+                <div class="w-px h-10 bg-[#E2D9CC]"></div>
+                <div>
+                  <div class="font-archivo text-2xl text-[#0B3A22]">BAB</div>
+                  <div class="text-xs text-[#A0AEC0] mt-0.5">Pays Basque</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ── Right Column — Blob + Floating Cards ── -->
+            <div
+              class="hero-right relative flex items-center justify-center"
+              style="min-height: 540px;"
+            >
+              <!-- Organic Green Blob -->
+              <div class="hero-blob"></div>
+
+              <!-- Floating Card 1 — ROI -->
+              <div class="float-card p-5 w-[178px]" style="top: 24px; right: -8px;">
+                <div class="flex items-center gap-2 mb-2">
+                  <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: #FFF0F5;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF9DBB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                      <polyline points="17 6 23 6 23 12"/>
+                    </svg>
+                  </div>
+                  <span class="text-[10px] font-semibold text-[#A0AEC0] tracking-wide uppercase">ROI MOYEN</span>
+                </div>
+                <div class="font-archivo text-[32px] text-[#0B3A22] leading-none">+120%</div>
+                <div class="mt-2 flex items-center gap-1">
+                  <span class="text-[10px] font-semibold text-[#4CAF7D]">↑ vs. site précédent</span>
+                </div>
+              </div>
+
+              <!-- Floating Card 2 — Conversions -->
+              <div class="float-card p-5 w-[192px]" style="bottom: 64px; left: -12px;">
+                <div class="flex items-center gap-2 mb-2">
+                  <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: #F0FDF4;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4CAF7D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                      <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                  </div>
+                  <span class="text-[10px] font-semibold text-[#A0AEC0] tracking-wide uppercase">CONVERSIONS</span>
+                </div>
+                <div class="font-archivo text-[32px] text-[#0B3A22] leading-none">+14%</div>
+                <div class="mt-2 flex items-center gap-1">
+                  <span class="text-[10px] font-semibold text-[#4CAF7D]">↑ taux de transformation</span>
+                </div>
+              </div>
+
+              <!-- Floating Card 3 — SEO Position -->
+              <div class="float-card p-4 w-[160px]" style="top: 50%; right: -20px; transform: translateY(-50%);">
+                <div class="text-[10px] font-semibold text-[#A0AEC0] tracking-wide uppercase mb-3">POSITION SEO</div>
+                <div class="flex gap-[4px] items-end h-[36px]">
+                  <div class="flex-1 rounded-sm" style="background-color: #E8F5E9; height: 28%;"></div>
+                  <div class="flex-1 rounded-sm" style="background-color: #A5D6A7; height: 48%;"></div>
+                  <div class="flex-1 rounded-sm" style="background-color: #66BB6A; height: 68%;"></div>
+                  <div class="flex-1 rounded-sm" style="background-color: #43A047; height: 84%;"></div>
+                  <div class="flex-1 rounded-sm" style="background-color: #0B3A22; height: 100%;"></div>
+                </div>
+                <div class="font-archivo text-xl text-[#0B3A22] mt-2">TOP 3</div>
+                <div class="text-[10px] text-[#A0AEC0]">Google local</div>
+              </div>
+
+              <!-- Decorative dots -->
+              <div class="absolute w-3 h-3 rounded-full" style="background-color: #FF9DBB; opacity: 0.55; top: 80px; left: 28px;"></div>
+              <div class="absolute w-2 h-2 rounded-full" style="background-color: #4CAF7D; opacity: 0.40; bottom: 90px; right: 48px;"></div>
+              <div class="absolute w-4 h-4 rounded-full" style="background-color: #FF9DBB; opacity: 0.20; bottom: 140px; left: 60px;"></div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Separator -->
+      <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="separator-glow"></div>
+      </div>
+
+      <!-- ──────────────────────────────
+           SECTION 2 — SERVICES
+      ────────────────────────────── -->
+      <section id="expertises" class="py-16 md:py-24" style="background-color: #FCFBF9;">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+
+          <!-- Header -->
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-14">
+            <div class="flex flex-col gap-3">
+              <div class="surtitre">Ce qu'on cultive pour vous</div>
+              <h2 class="font-archivo text-[#0B3A22] uppercase leading-tight" style="font-size: clamp(30px, 4.5vw, 52px);">
+                NOS SERVICES<br/>POUR CULTIVER<br/>TA VISIBILITÉ
+              </h2>
+            </div>
+            <a href="#contact" class="btn-rose self-start md:self-end whitespace-nowrap" style="flex-shrink: 0;">
+              COMMENCER MON ACCOMPAGNEMENT
+            </a>
+          </div>
+
+          <!-- Cards Grid -->
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+
+            <!-- Card — Création Web -->
+            <div class="service-card bg-white rounded-3xl shadow-lg p-7 flex flex-col gap-5 hover:shadow-xl transition-shadow duration-300" style="border: 1px solid rgba(11,58,34,0.05);">
+              <div class="w-14 h-14 rounded-2xl flex items-center justify-center" style="background-color: #F0FDF4;">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0B3A22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                  <line x1="8" y1="21" x2="16" y2="21"/>
+                  <line x1="12" y1="17" x2="12" y2="21"/>
+                  <path d="m9 8 2 2 4-4"/>
+                </svg>
+              </div>
+              <div class="flex-1 flex flex-col gap-2">
+                <h3 class="font-archivo text-lg text-[#0B3A22] uppercase">Création Web</h3>
+                <p class="text-sm text-[#718096] leading-relaxed">Sites vitrine, e-commerce et apps web sur-mesure. Ultra-rapides et optimisés dès le départ.</p>
+              </div>
+              <a href="#contact" class="btn-forest-sm self-start">EN SAVOIR PLUS</a>
+            </div>
+
+            <!-- Card — SEO Local -->
+            <div class="service-card bg-white rounded-3xl shadow-lg p-7 flex flex-col gap-5 hover:shadow-xl transition-shadow duration-300" style="border: 1px solid rgba(11,58,34,0.05);">
+              <div class="w-14 h-14 rounded-2xl flex items-center justify-center" style="background-color: #FFF3F7;">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0B3A22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"/>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                  <path d="M11 8v3l2 2"/>
+                </svg>
+              </div>
+              <div class="flex-1 flex flex-col gap-2">
+                <h3 class="font-archivo text-lg text-[#0B3A22] uppercase">SEO Local</h3>
+                <p class="text-sm text-[#718096] leading-relaxed">Positionnement Google Maps et recherche locale à Bayonne, Anglet, Biarritz. Visibilité mesurable.</p>
+              </div>
+              <a href="#contact" class="btn-forest-sm self-start">EN SAVOIR PLUS</a>
+            </div>
+
+            <!-- Card — Communication -->
+            <div class="service-card bg-white rounded-3xl shadow-lg p-7 flex flex-col gap-5 hover:shadow-xl transition-shadow duration-300" style="border: 1px solid rgba(11,58,34,0.05);">
+              <div class="w-14 h-14 rounded-2xl flex items-center justify-center" style="background-color: #F0F4FF;">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0B3A22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                  <line x1="9" y1="10" x2="15" y2="10"/>
+                  <line x1="9" y1="14" x2="12" y2="14"/>
+                </svg>
+              </div>
+              <div class="flex-1 flex flex-col gap-2">
+                <h3 class="font-archivo text-lg text-[#0B3A22] uppercase">Communication</h3>
+                <p class="text-sm text-[#718096] leading-relaxed">Stratégie de contenu, réseaux sociaux et branding cohérent pour ancrer votre identité digitale.</p>
+              </div>
+              <a href="#contact" class="btn-forest-sm self-start">EN SAVOIR PLUS</a>
+            </div>
+
+            <!-- Card — IA & Automatisation -->
+            <div class="service-card bg-white rounded-3xl shadow-lg p-7 flex flex-col gap-5 hover:shadow-xl transition-shadow duration-300" style="border: 1px solid rgba(11,58,34,0.05);">
+              <div class="w-14 h-14 rounded-2xl flex items-center justify-center" style="background-color: #FFFBF0;">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0B3A22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="3"/>
+                  <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+                </svg>
+              </div>
+              <div class="flex-1 flex flex-col gap-2">
+                <h3 class="font-archivo text-lg text-[#0B3A22] uppercase">IA & Automatisation</h3>
+                <p class="text-sm text-[#718096] leading-relaxed">Chatbots, workflows IA et automatisation métier. L'intelligence artificielle au service de votre croissance.</p>
+              </div>
+              <a href="#contact" class="btn-forest-sm self-start">EN SAVOIR PLUS</a>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Separator -->
+      <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="separator-glow"></div>
+      </div>
+
+      <!-- ──────────────────────────────
+           SECTION 3 — TEAM
+      ────────────────────────────── -->
+      <section id="apropos" class="py-16 md:py-24" style="background-color: #FCFBF9;">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+
+          <!-- Header -->
+          <div class="text-center flex flex-col items-center gap-4 mb-14">
+            <div class="surtitre">Votre équipe locale</div>
+            <h2 class="font-archivo text-[#0B3A22] uppercase leading-tight text-center" style="font-size: clamp(30px, 4.5vw, 52px);">
+              DES EXPERTS LOCAUX<br/>POUR GRANDIR
+            </h2>
+            <p class="text-[#718096] text-base leading-relaxed max-w-xl text-center">
+              Une équipe ancrée au Pays Basque, qui comprend les enjeux locaux et construit des stratégies digitales taillées pour votre territoire.
+            </p>
+          </div>
+
+          <!-- Team Cards -->
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Expert 1 -->
+            <div class="team-card rounded-3xl p-8 flex flex-col gap-5" style="background-color: #0D2B3E;">
+              <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-2xl" style="background-color: #1A3F56;">
+                🌊
+              </div>
+              <div class="flex flex-col gap-1">
+                <h3 class="font-archivo text-xl uppercase" style="color: #64B5F6;">Antoine D.</h3>
+                <div class="text-sm" style="color: #90A4AE;">Co-fondateur & Lead Dev</div>
+              </div>
+              <p class="text-sm leading-relaxed flex-1" style="color: #B0BEC5;">
+                Architecte technique expert Astro, React et performance web. Développe des sites qui se démarquent grâce à leur vitesse et leur maîtrise du SEO technique.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-auto">
+                <span class="tag-expert">Astro</span>
+                <span class="tag-expert">React</span>
+                <span class="tag-expert">Performance</span>
+              </div>
+            </div>
+
+            <!-- Expert 2 -->
+            <div class="team-card rounded-3xl p-8 flex flex-col gap-5" style="background-color: #0D2B3E;">
+              <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-2xl" style="background-color: #1A3F56;">
+                🌱
+              </div>
+              <div class="flex flex-col gap-1">
+                <h3 class="font-archivo text-xl uppercase" style="color: #64B5F6;">Marie L.</h3>
+                <div class="text-sm" style="color: #90A4AE;">Co-fondatrice & Stratège SEO</div>
+              </div>
+              <p class="text-sm leading-relaxed flex-1" style="color: #B0BEC5;">
+                Spécialiste SEO local et GEO (Generative Engine Optimization). Votre visibilité sur Google aujourd'hui et les moteurs IA de demain.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-auto">
+                <span class="tag-expert">SEO Local</span>
+                <span class="tag-expert">GEO</span>
+                <span class="tag-expert">Contenu</span>
+              </div>
+            </div>
+
+            <!-- Expert 3 -->
+            <div class="team-card rounded-3xl p-8 flex flex-col gap-5" style="background-color: #0D2B3E;">
+              <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-2xl" style="background-color: #1A3F56;">
+                ⚡
+              </div>
+              <div class="flex flex-col gap-1">
+                <h3 class="font-archivo text-xl uppercase" style="color: #64B5F6;">Julien P.</h3>
+                <div class="text-sm" style="color: #90A4AE;">Expert IA & Automatisation</div>
+              </div>
+              <p class="text-sm leading-relaxed flex-1" style="color: #B0BEC5;">
+                Intègre l'IA dans votre process métier : chatbots, workflows automatisés, génération de contenu et analyse de données pour booster votre croissance.
+              </p>
+              <div class="flex flex-wrap gap-2 mt-auto">
+                <span class="tag-expert">IA Générative</span>
+                <span class="tag-expert">Automatisation</span>
+                <span class="tag-expert">LLM</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Separator -->
+      <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="separator-glow"></div>
+      </div>
+
+      <!-- ──────────────────────────────
+           SECTION 4 — CTA BAND
+      ────────────────────────────── -->
+      <section id="contact" class="py-16 md:py-20" style="background-color: #FCFBF9;">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+          <div
+            id="cta-band"
+            class="rounded-3xl p-10 md:p-16 flex flex-col items-center text-center gap-7"
+            style="background-color: #0B3A22;"
+          >
+            <div class="inline-flex items-center gap-2" style="font-size: 0.65rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: #4CAF7D;">
+              <span style="display:block;width:6px;height:6px;border-radius:50%;background:#4CAF7D;flex-shrink:0;"></span>
+              Prêt à passer à l'action ?
+            </div>
+            <h2 class="font-archivo text-white uppercase leading-tight" style="font-size: clamp(28px, 4.5vw, 52px);">
+              FAISONS POUSSER<br/>VOTRE PROJET ENSEMBLE
+            </h2>
+            <p class="text-base leading-relaxed max-w-lg" style="color: #8DB59A;">
+              Un échange gratuit de 30 minutes pour comprendre vos besoins et vous proposer la stratégie adaptée à votre activité au Pays Basque.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="mailto:contact@wave-ia.fr" class="btn-rose-xl">PRENDRE RENDEZ-VOUS</a>
+              <a href="tel:+33600000000" class="btn-white-outline">NOUS APPELER</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ═══════════════════════════════════
+         FOOTER
+    ═══════════════════════════════════ -->
+    <footer class="py-10" style="background-color: #FCFBF9; border-top: 1px solid #E8DDD0;">
+      <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+
+          <!-- Logo + Tagline -->
+          <div class="text-center md:text-left">
+            <div class="font-archivo text-xl text-[#0B3A22]">Wave IA</div>
+            <div class="text-xs text-[#A0AEC0] mt-1">Agence web · Pays Basque</div>
+          </div>
+
+          <!-- Cities -->
+          <div class="flex items-center gap-3 text-sm">
+            <span class="font-semibold text-[#0B3A22]">Bayonne</span>
+            <span style="color: #D4C5B0;">|</span>
+            <span class="font-semibold text-[#0B3A22]">Anglet</span>
+            <span style="color: #D4C5B0;">|</span>
+            <span class="font-semibold text-[#0B3A22]">Biarritz</span>
+          </div>
+
+          <!-- Legal -->
+          <div class="text-xs text-[#CBD5E0]">
+            © 2025 Wave IA · Tous droits réservés
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ═══════════════════════════════════
+         SCRIPTS — GSAP + Lenis (S-Tier §4)
+    ═══════════════════════════════════ -->
+    <script>
+      import { gsap } from 'gsap';
+      import { ScrollTrigger } from 'gsap/ScrollTrigger';
+      import Lenis from 'lenis';
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      // ── Lenis smooth scroll ──
+      const lenis = new Lenis({ lerp: 0.075, smoothWheel: true });
+
+      // Integrate Lenis with GSAP ticker (canonical approach)
+      gsap.ticker.add((time: number) => {
+        lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+      lenis.on('scroll', ScrollTrigger.update);
+
+      // ── Navbar scroll effect ──
+      const navbar = document.getElementById('navbar');
+      ScrollTrigger.create({
+        start: 'top -72',
+        onEnter: () => navbar?.classList.add('scrolled'),
+        onLeaveBack: () => navbar?.classList.remove('scrolled'),
+      });
+
+      // ── Mobile menu toggle ──
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const bar1 = document.getElementById('bar1');
+      const bar2 = document.getElementById('bar2');
+      const bar3 = document.getElementById('bar3');
+      let menuOpen = false;
+
+      hamburger?.addEventListener('click', () => {
+        menuOpen = !menuOpen;
+        hamburger.setAttribute('aria-expanded', String(menuOpen));
+        mobileMenu?.classList.toggle('open', menuOpen);
+        if (bar1 && bar2 && bar3) {
+          if (menuOpen) {
+            bar1.style.transform = 'rotate(45deg) translate(5px, 5px)';
+            bar2.style.opacity = '0';
+            bar3.style.transform = 'rotate(-45deg) translate(5px, -5px)';
+          } else {
+            bar1.style.transform = '';
+            bar2.style.opacity = '1';
+            bar3.style.transform = '';
+          }
+        }
+      });
+
+      // Close menu on link click
+      mobileMenu?.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          menuOpen = false;
+          hamburger?.setAttribute('aria-expanded', 'false');
+          mobileMenu.classList.remove('open');
+          if (bar1 && bar2 && bar3) {
+            bar1.style.transform = '';
+            bar2.style.opacity = '1';
+            bar3.style.transform = '';
+          }
+        });
+      });
+
+      // ── Hero entrance animation ──
+      const heroTl = gsap.timeline({ delay: 0.15 });
+      heroTl
+        .fromTo(
+          '.hero-left > *',
+          { opacity: 0, y: 36 },
+          { opacity: 1, y: 0, stagger: 0.1, duration: 0.75, ease: 'power3.out' }
+        )
+        .fromTo(
+          '.hero-blob',
+          { scale: 0.82, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 1.0, ease: 'power2.out' },
+          '-=0.5'
+        )
+        .fromTo(
+          '.float-card',
+          { opacity: 0, scale: 0.88, y: 20 },
+          { opacity: 1, scale: 1, y: 0, stagger: 0.15, duration: 0.6, ease: 'back.out(1.5)' },
+          '-=0.4'
+        );
+
+      // ── Continuous float animation ──
+      const floatCards = document.querySelectorAll<HTMLElement>('.float-card');
+      const floatParams = [
+        { y: -10, duration: 3.2 },
+        { y: 8, duration: 3.8 },
+        { y: -7, duration: 4.1 },
+      ];
+      floatCards.forEach((card, i) => {
+        const params = floatParams[i % floatParams.length];
+        gsap.to(card, {
+          y: params.y,
+          duration: params.duration,
+          ease: 'sine.inOut',
+          repeat: -1,
+          yoyo: true,
+          delay: i * 0.4,
+        });
+      });
+
+      // ── CTA band entrance ──
+      ScrollTrigger.create({
+        trigger: '#cta-band',
+        start: 'top 85%',
+        onEnter: () => {
+          gsap.fromTo(
+            '#cta-band',
+            { opacity: 0, y: 40 },
+            { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }
+          );
+        },
+        once: true,
+      });
+
+      // ── Service cards scroll animation (S-Tier §3.1) ──
+      ScrollTrigger.batch('.service-card', {
+        start: 'top 88%',
+        onEnter: (elements: HTMLElement[]) => {
+          gsap.fromTo(
+            elements,
+            { opacity: 0, y: 48 },
+            { opacity: 1, y: 0, stagger: 0.09, duration: 0.65, ease: 'power3.out' }
+          );
+        },
+        once: true,
+      });
+
+      // ── Team cards scroll animation ──
+      ScrollTrigger.batch('.team-card', {
+        start: 'top 88%',
+        onEnter: (elements: HTMLElement[]) => {
+          gsap.fromTo(
+            elements,
+            { opacity: 0, y: 56 },
+            { opacity: 1, y: 0, stagger: 0.12, duration: 0.75, ease: 'power3.out' }
+          );
+        },
+        once: true,
+      });
+    </script>
+
+  </body>
 </html>
